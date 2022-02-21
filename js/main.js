@@ -1,6 +1,32 @@
-const fruits = [undefined, 'guava', 'coconut'];
+class Shape {
+    #privateVariable = 'privateVariable';
+    publicVariable = 'publicVariable';
+    static staticVariable = 'staticVariable';
 
-const [firstFruits = 'strawberry', ...otherFruits] = fruits;
+    constructor(height, width) {
+        this.height = height;
+        this.width = width;
+    }
 
-console.log(firstFruits);
-console.log(otherFruits);
+    getArea() {
+        return 'Not implemented';
+    }
+
+    getPrivateData() {
+        return this.#privateVariable;
+    }
+}
+
+class Square extends Shape {
+    getArea() {
+        return this.height * this.width;
+    }
+
+    getParentClassArea() {
+        return super.getArea();
+    }
+}
+
+const mySquare = new Square(5, 10);
+
+console.log(mySquare.getPrivateData());
