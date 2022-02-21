@@ -1,5 +1,7 @@
-const test = 5 && 6;
-const sample = 0 && false && null;
+let sample = { name: 'Rysh' };
+let copySample = sample;
 
-console.log(test);
-console.log(sample);
+sample.test = 'test';
+
+console.log('sample', sample);
+console.log('copySample', copySample);
