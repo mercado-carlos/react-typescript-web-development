@@ -1,7 +1,8 @@
-let sample = { name: 'Rysh' };
-let copySample = sample;
+const orig = ['avocado', 'apple', { name: 'strawberry' }];
 
-sample.test = 'test';
+const copy = JSON.parse(JSON.stringify(orig));
 
-console.log('sample', sample);
-console.log('copySample', copySample);
+copy[2].name = 'coconut';
+
+console.log('orig', orig);
+console.log('copy', copy);
