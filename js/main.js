@@ -1,32 +1,23 @@
-class Shape {
-    #privateVariable = 'privateVariable';
-    publicVariable = 'publicVariable';
-    static staticVariable = 'staticVariable';
+class Printer {
+    name = 'I am a Printer Class';
 
-    constructor(height, width) {
-        this.height = height;
-        this.width = width;
+    printName() {
+        console.log('printName:', this.name);
     }
-
-    getArea() {
-        return 'Not implemented';
-    }
-
-    getPrivateData() {
-        return this.#privateVariable;
+    printNameArrowFn() {
+        console.log('printNameArrowFn:', this.name);
     }
 }
 
-class Square extends Shape {
-    getArea() {
-        return this.height * this.width;
-    }
+const myPrinter = new Printer();
+/* myPrinter.printName();
+myPrinter.printNameArrowFn(); */
 
-    getParentClassArea() {
-        return super.getArea();
-    }
-}
+const customPrinter = {
+    name: 'I am Custom Printer',
+    printName: myPrinter.printName,
+    printNameArrowFn: myPrinter.printNameArrowFn,
+};
 
-const mySquare = new Square(5, 10);
-
-console.log(mySquare.getPrivateData());
+//customPrinter.printName();
+customPrinter.printNameArrowFn();
