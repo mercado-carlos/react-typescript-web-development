@@ -1,7 +1,8 @@
-export interface CounterManagmentProps {
+export interface CounterManagementProps {
     ownerName: string;
 }
 
-export interface CounterManagmentState {
+export interface CounterManagementState {
     counter: number;
+    users: string[];
 }
