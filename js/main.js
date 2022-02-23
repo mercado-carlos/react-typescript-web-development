@@ -1,23 +1,58 @@
-class Printer {
-    name = 'I am a Printer Class';
-
-    printName() {
-        console.log('printName:', this.name);
-    }
-    printNameArrowFn() {
-        console.log('printNameArrowFn:', this.name);
-    }
+/* function calculateSquareArea() {
+    return new Promise(function (resolve, reject) {
+        setTimeout(() => {
+            const squareArea = 5 * 5;
+            resolve(squareArea);
+        }, 500);
+    });
 }
 
-const myPrinter = new Printer();
-/* myPrinter.printName();
-myPrinter.printNameArrowFn(); */
+function onFulFilled(data) {
+    console.log('onFulFilled', data);
+}
+function onReject(reason) {
+    console.log('onReject', reason);
+}
 
-const customPrinter = {
-    name: 'I am Custom Printer',
-    printName: myPrinter.printName,
-    printNameArrowFn: myPrinter.printNameArrowFn,
+calculateSquareArea()
+    .then(onFulFilled)
+    .catch((reason) => {
+        console.log('catch', reason);
+    }); */
+
+/* const myPromises = [
+    new Promise((resolve, reject) => setTimeout(() => reject(100), 500)),
+    new Promise((resolve, reject) => setTimeout(() => resolve(200), 1000)),
+    new Promise((resolve, reject) => setTimeout(() => resolve(300), 1500)),
+];
+
+function onFulFilled(data) {
+    console.log('onFulFilled', data);
+}
+
+//Promise.all(myPromises)
+//Promise.allSettled(myPromises)
+//Promise.any(myPromises)
+Promise.race(myPromises)
+    .then(onFulFilled)
+    .catch((reason) => {
+        console.log('catch', reason);
+    }); */
+
+let myNumber = 5;
+
+changeNumber = () => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            myNumber = 10;
+            resolve(myNumber);
+        }, 500);
+    });
 };
 
-//customPrinter.printName();
-customPrinter.printNameArrowFn();
+startChange = async () => {
+    await changeNumber();
+    console.log(myNumber);
+};
+
+startChange();
