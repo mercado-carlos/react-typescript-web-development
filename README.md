@@ -1,2 +1,1 @@
-# README.md
-## Please navigate between branches
+# Please navigate between branches
