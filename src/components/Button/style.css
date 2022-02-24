@@ -1,4 +1,27 @@
-.primary {
-    background: blue;
+.btn {
+    cursor: pointer;
+    padding: 10px 20px;
+    border: none;
+    height: 40px;
+    outline: none;
+    border-radius: 5px;
     color: white;
+}
+
+.btn-primary {
+    background: green;
+}
+.btn-primary:hover {
+    background: darkgreen;
+}
+
+.btn-default {
+    background: blue;
+}
+.btn-default:hover {
+    background: darkblue;
+}
+
+.btn:active {
+    transform: scale(0.9);
 }

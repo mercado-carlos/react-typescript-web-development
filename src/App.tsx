@@ -1,18 +1,14 @@
 import React from 'react';
 import './App.css';
 
-import { CounterManagement } from './components/CounterManagement';
+import { UserManagement } from './components/UserManagement';
 
-class App extends React.Component {
-    render() {
-        return (
-            /* Or use: <></> */
-            <React.Fragment>
-                <h1>My App</h1>
-                <CounterManagement ownerName="Carlos" />
-            </React.Fragment>
-        );
-    }
-}
+const App = () => {
+    return (
+        <div className="App">
+            <UserManagement />
+        </div>
+    );
+};
 
 export default App;
