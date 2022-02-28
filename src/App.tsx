@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
 
-import { FormElements } from './components/FormElements';
+import StudentGrade from './components/StudentGrade';
 
 const App = () => {
     return (
         <div className="App">
-            <FormElements />
+            <StudentGrade />
         </div>
     );
 };
