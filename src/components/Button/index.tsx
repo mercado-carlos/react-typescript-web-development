@@ -8,11 +8,11 @@ export const Button: React.FC<ButtonProps> = ({
     type,
     className,
 }) => {
-    const buttonType = type || 'default';
+    const currentType = type || 'default';
 
     return (
         <button
-            className={`btn btn-${buttonType} ${className || ''}`}
+            className={`button-${currentType} ${className || ''}`}
             onClick={onClick}
         >
             {children}
