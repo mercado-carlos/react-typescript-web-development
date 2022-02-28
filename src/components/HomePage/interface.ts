@@ -1,3 +1,4 @@
-export interface HomePageProps {}
-
-export interface HomePageState {}
+export interface HomePageState {
+    counter: number;
+    hasError: boolean;
+}

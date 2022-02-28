@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
 
-import StudentGrade from './components/StudentGrade';
+import HomePage from './components/HomePage';
 
 const App = () => {
     return (
-        <div className="App">
-            <StudentGrade />
+        <div>
+            <HomePage />
         </div>
     );
 };
