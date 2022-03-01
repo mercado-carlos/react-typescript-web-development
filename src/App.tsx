@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
 
-import HomePage from './components/CreatePortalAPI/HomePage';
+import MessageEveryday from './components/AssignmentMessageEveryday/MessageEveryday';
 
 const App = () => {
     return (
         <div className="App">
-            <HomePage />
+            <MessageEveryday />
         </div>
     );
 };
