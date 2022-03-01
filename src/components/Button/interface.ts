@@ -1,5 +1,5 @@
 export interface ButtonProps {
-    onClick(): void;
+    onClick?(): void;
     type?: 'primary' | 'default';
     className?: string;
 }

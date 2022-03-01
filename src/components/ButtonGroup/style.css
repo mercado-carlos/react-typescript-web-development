@@ -1,0 +1,26 @@
+.btn-group-btn {
+    background-color: whitesmoke;
+    border: 1px solid #cccccc;
+    color: black;
+}
+
+.btn-group-btn:hover {
+    background-color: yellowgreen;
+}
+
+.btn-group-btn-selected {
+    background-color: yellowgreen;
+}
+
+.btn-group-btn.row {
+    margin-right: 10px;
+}
+
+.btn-group.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-group-btn.column {
+    margin-bottom: 10px;
+}

@@ -1,16 +1,29 @@
-.button-primary {
-    background: skyblue;
-    padding: 5px;
+.btn {
     cursor: pointer;
+    padding: 10px 20px;
+    border: none;
+    height: 40px;
+    outline: none;
+    border-radius: 5px;
+    color: white;
 }
 
-.button-default {
-    padding: 5px;
-    cursor: pointer;
+.btn-primary {
+    background-color: green;
 }
 
-.button-group-btn {
-    background: green;
-    padding: 5px;
-    cursor: pointer;
+.btn-primary:hover {
+    background-color: darkgreen;
+}
+
+.btn-default {
+    background-color: blue;
+}
+
+.btn-default:hover {
+    background-color: darkblue;
+}
+
+.btn:active {
+    transform: scale(0.9);
 }

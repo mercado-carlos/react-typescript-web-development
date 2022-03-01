@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
 
-import HomePage from './components/HomePage';
+import ReusableButton from './components/ReusableButton';
 
 const App = () => {
     return (
         <div>
-            <HomePage />
+            <ReusableButton />
         </div>
     );
 };
