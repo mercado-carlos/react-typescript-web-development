@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import HomePage from './components/FindDomNodeAPI/HomePage';
+import HomePage from './components/CreatePortalAPI/HomePage';
 
 const App = () => {
     return (
