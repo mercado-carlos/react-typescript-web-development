@@ -5,9 +5,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import AboutPage from '../components/CreateAndAccessStore/AboutPage';
 import HomePage from '../components/CreateAndAccessStore/HomePage';
-import { fruitsReducer } from '../reducer/fruitsReducer';
+import { rootReducer } from '../reducer/rootReducer';
 
-const store = createStore(fruitsReducer, ['apple', 'avocado']);
+const store = createStore(rootReducer, {
+    users: ['Carlos', 'May'],
+    fruits: ['apple', 'avocado'],
+});
 
 const Router = () => {
     return (

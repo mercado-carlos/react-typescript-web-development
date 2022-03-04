@@ -4,6 +4,7 @@ import {
     MapDispatchToPropsFunction,
     MapStateToProps,
 } from 'react-redux';
+import { rootReducer } from '../../../reducer/rootReducer';
 
 import {
     FruitsProps,
@@ -18,6 +19,7 @@ class Fruits extends React.Component<FruitsProps> {
     };
 
     render() {
+        console.log('Fruits Render Called');
         const { ownerName, fruits } = this.props;
 
         return (
@@ -38,10 +40,11 @@ class Fruits extends React.Component<FruitsProps> {
 const mapStateToProps: MapStateToProps<
     FruitsStateProps,
     FruitsOwnProps,
-    string[]
+    ReturnType<typeof rootReducer>
 > = (state, ownProps) => {
+    console.log('Fruits Map State Props Called');
     return {
-        fruits: state,
+        fruits: state.fruits,
     };
 };
 
