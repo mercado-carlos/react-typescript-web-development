@@ -10,7 +10,7 @@ export const fruitsReducer: Reducer<string[], FruitsAction> = (
     action
 ) => {
     switch (action.type) {
-        case 'ADD_FRUIT':
+        case 'ADD_FRUITS':
             return [...state, ...action.fruits];
 
         default:

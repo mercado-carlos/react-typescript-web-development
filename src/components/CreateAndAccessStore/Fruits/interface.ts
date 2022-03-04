@@ -6,4 +6,10 @@ export interface FruitsStateProps {
     fruits: string[];
 }
 
-export type FruitsProps = FruitsOwnProps & FruitsStateProps;
+export interface FruitsDispatchProps {
+    addFruits(fruits: string[]): any;
+}
+
+export type FruitsProps = FruitsOwnProps &
+    FruitsStateProps &
+    FruitsDispatchProps;
