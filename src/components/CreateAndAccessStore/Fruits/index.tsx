@@ -4,7 +4,8 @@ import {
     MapDispatchToPropsFunction,
     MapStateToProps,
 } from 'react-redux';
-import { rootReducer } from '../../../reducer/rootReducer';
+import FruitsAction from '../../../store/action/fruitsAction';
+import { rootReducer } from '../../../store/reducer/rootReducer';
 
 import {
     FruitsProps,
@@ -51,13 +52,11 @@ const mapStateToProps: MapStateToProps<
 const mapDispatchToProps: MapDispatchToPropsFunction<
     FruitsDispatchProps,
     FruitsOwnProps
-> = (dispatch, ownProps) => {
+> = (dispatch: any, ownProps) => {
+    const fruitsAction = new FruitsAction();
+
     return {
-        addFruits: (fruits) =>
-            dispatch({
-                type: 'ADD_FRUITS',
-                fruits,
-            }),
+        addFruits: (fruits) => dispatch(fruitsAction.addFruits(fruits)),
     };
 };
 

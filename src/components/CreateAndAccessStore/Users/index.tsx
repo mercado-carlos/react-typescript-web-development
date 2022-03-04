@@ -4,7 +4,7 @@ import {
     MapDispatchToPropsFunction,
     MapStateToProps,
 } from 'react-redux';
-import { rootReducer } from '../../../reducer/rootReducer';
+import { rootReducer } from '../../../store/reducer/rootReducer';
 
 import {
     UsersProps,

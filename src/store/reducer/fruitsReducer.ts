@@ -1,16 +1,18 @@
 import { Reducer } from 'redux';
 
-export interface FruitsAction {
+import FruitsActions from '../action/fruitsAction';
+
+export interface FruitsReducerAction {
     type: string;
     fruits: string[];
 }
 
-export const fruitsReducer: Reducer<string[], FruitsAction> = (
+export const fruitsReducer: Reducer<string[], FruitsReducerAction> = (
     state = [],
     action
 ) => {
     switch (action.type) {
-        case 'ADD_FRUITS':
+        case FruitsActions.ADD_FRUITS:
             return [...state, ...action.fruits];
 
         default:
