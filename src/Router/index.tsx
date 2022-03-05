@@ -1,24 +1,13 @@
 import React from 'react';
-import { applyMiddleware, createStore, Middleware } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import AboutPage from '../components/CreateAndAccessStore/AboutPage';
 import HomePage from '../components/CreateAndAccessStore/HomePage';
 import { rootReducer } from '../store/reducer/rootReducer';
-
-const anotherMiddleware: Middleware = (store) => (next) => (action) => {
-    console.log('Current action:', action);
-    next(action);
-};
-
-const customMiddleware: Middleware = (store) => (next) => (action) => {
-    if (typeof action === 'function') {
-        next(action(store));
-    } else {
-        next(action);
-    }
-};
+import { customMiddleware } from '../store/middlewares/customMiddleware';
+import { anotherMiddleware } from '../store/middlewares/anotherMiddleware';
 
 const store = createStore(
     rootReducer,
