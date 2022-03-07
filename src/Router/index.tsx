@@ -2,6 +2,7 @@ import React from 'react';
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import AboutPage from '../components/CreateAndAccessStore/AboutPage';
 import HomePage from '../components/CreateAndAccessStore/HomePage';
@@ -15,7 +16,7 @@ const store = createStore(
         users: ['Carlos', 'May'],
         fruits: ['apple', 'avocado'],
     },
-    applyMiddleware(customMiddleware, anotherMiddleware)
+    composeWithDevTools(applyMiddleware(customMiddleware, anotherMiddleware))
 );
 
 const Router = () => {
