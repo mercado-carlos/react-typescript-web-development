@@ -1,11 +1,11 @@
 import { Reducer } from 'redux';
 
-export interface UsersAction {
+export interface UsersReducerAction {
     type: string;
     users: string[];
 }
 
-export const usersReducer: Reducer<string[], UsersAction> = (
+export const usersReducer: Reducer<string[], UsersReducerAction> = (
     state = [],
     action
 ) => {

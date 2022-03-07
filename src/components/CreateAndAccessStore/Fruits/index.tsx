@@ -1,8 +1,13 @@
 import React from 'react';
 import { connect, MapStateToProps } from 'react-redux';
+
 import FruitsAction from '../../../store/action/fruitsAction';
 import { CustomDispatch } from '../../../store/middlewares/customMiddleware';
-import { rootReducer } from '../../../store/reducer/rootReducer';
+import { FruitsReducerAction } from '../../../store/reducer/fruitsReducer';
+import {
+    rootReducer,
+    StoreStateType,
+} from '../../../store/reducer/rootReducer';
 
 import {
     FruitsProps,
@@ -47,7 +52,7 @@ const mapStateToProps: MapStateToProps<
 };
 
 const mapDispatchToProps = (
-    dispatch: CustomDispatch,
+    dispatch: CustomDispatch<StoreStateType, FruitsReducerAction>,
     ownProps: FruitsOwnProps
 ): FruitsDispatchProps => {
     const fruitsAction = new FruitsAction();

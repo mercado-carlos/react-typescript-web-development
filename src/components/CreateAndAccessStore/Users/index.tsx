@@ -1,10 +1,13 @@
 import React from 'react';
+import { connect, MapStateToProps } from 'react-redux';
+
+import UsersAction from '../../../store/action/usersAction';
+import { CustomDispatch } from '../../../store/middlewares/customMiddleware';
+import { UsersReducerAction } from '../../../store/reducer/userReducer';
 import {
-    connect,
-    MapDispatchToPropsFunction,
-    MapStateToProps,
-} from 'react-redux';
-import { rootReducer } from '../../../store/reducer/rootReducer';
+    rootReducer,
+    StoreStateType,
+} from '../../../store/reducer/rootReducer';
 
 import {
     UsersProps,
@@ -42,22 +45,20 @@ const mapStateToProps: MapStateToProps<
     UsersOwnProps,
     ReturnType<typeof rootReducer>
 > = (state, ownProps) => {
-    console.log('Users Map State  Props Called');
+    console.log('Users Map State Props Called');
     return {
         users: state.users,
     };
 };
 
-const mapDispatchToProps: MapDispatchToPropsFunction<
-    UsersDispatchProps,
-    UsersOwnProps
-> = (dispatch, ownProps) => {
+const mapDispatchToProps = (
+    dispatch: CustomDispatch<StoreStateType, UsersReducerAction>,
+    ownProps: UsersOwnProps
+): UsersDispatchProps => {
+    const usersAction = new UsersAction();
+
     return {
-        addUsers: (users) =>
-            dispatch({
-                type: 'ADD_USERS',
-                users,
-            }),
+        addUsers: (users) => dispatch(usersAction.addUsers(users)),
     };
 };
 
