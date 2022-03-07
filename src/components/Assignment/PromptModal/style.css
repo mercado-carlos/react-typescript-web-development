@@ -1,0 +1,17 @@
+.prompt-modal {
+    width: 300px;
+}
+
+.prompt-modal .question-text {
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.prompt-modal .buttons {
+    text-align: center;
+}
+
+.prompt-modal .buttons button {
+    margin-right: 20px;
+}

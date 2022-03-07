@@ -1,0 +1,21 @@
+.view-note-modal {
+    width: 400px;
+}
+
+.view-note-modal .ok-button {
+    width: 100%;
+}
+
+.view-note-modal .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.view-note-modal .header .title {
+    width: 220px;
+}
+
+.view-note-modal .note-modaly-body {
+    min-height: 150px;
+}

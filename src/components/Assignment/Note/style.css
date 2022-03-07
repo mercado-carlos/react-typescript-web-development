@@ -1,0 +1,47 @@
+.note-container {
+    position: relative;
+}
+
+.note-container .note {
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    color: gray;
+    position: relative;
+}
+
+.note-container .note.odd {
+    background-color: whitesmoke;
+}
+
+.note-container .note.even {
+    background-color: #f0ebeb;
+}
+
+.note-container .note:hover {
+    background-color: #cccccc;
+}
+
+.note-container .lmd {
+    font-size: 16px;
+    font-style: italic;
+    color: darkgray;
+    margin-top: 10px;
+}
+
+.note-container .close-button {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    color: black;
+    cursor: pointer;
+    display: none;
+}
+
+.note-container:hover .close-button {
+    display: flex;
+    width: 20px;
+    justify-content: center;
+    align-items: center;
+}

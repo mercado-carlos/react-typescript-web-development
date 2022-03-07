@@ -1,33 +1,36 @@
 import React from 'react';
-import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { createStore } from 'redux';
+import { rootReducer } from '../store/rootReducer';
+import '../App.css';
 
-import AboutPage from '../components/CreateAndAccessStore/AboutPage';
-import HomePage from '../components/CreateAndAccessStore/HomePage';
-import { rootReducer } from '../store/reducer/rootReducer';
-import { customMiddleware } from '../store/middlewares/customMiddleware';
-import { anotherMiddleware } from '../store/middlewares/anotherMiddleware';
+import HomePage from '../containers/HomePage';
 
-const store = createStore(
-    rootReducer,
-    {
-        users: ['Carlos', 'May'],
-        fruits: ['apple', 'avocado'],
-    },
-    composeWithDevTools(applyMiddleware(customMiddleware, anotherMiddleware))
-);
+const store = createStore(rootReducer, {
+    notes: [
+        {
+            id: '123',
+            title: 'Attack On Titan',
+            content: 'Eren Jaeger',
+            createdDate: '2021-03-30T07:54:17.176Z',
+            modifiedDate: '2021-03-30T07:54:17.176Z',
+        },
+        {
+            id: '12345',
+            title: 'My Hero Acadamia',
+            content: 'Deku',
+            createdDate: '2021-03-30T07:54:17.176Z',
+            modifiedDate: '2021-03-30T07:54:17.176Z',
+        },
+    ],
+});
 
 const Router = () => {
     return (
         <Provider store={store}>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/about" element={<AboutPage />} />
-                </Routes>
-            </BrowserRouter>
+            <div className="App">
+                <HomePage />
+            </div>
         </Provider>
     );
 };

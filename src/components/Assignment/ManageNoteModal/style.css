@@ -1,0 +1,12 @@
+.manage-note-modal .input-title {
+    width: 400px;
+}
+
+.manage-note-modal .textarea {
+    width: 400px;
+    margin-top: 10px;
+}
+
+.manage-note-modal button {
+    width: 100%;
+}

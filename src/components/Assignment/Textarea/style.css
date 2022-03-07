@@ -1,0 +1,10 @@
+.textarea {
+    border-radius: 5px;
+    border: 1px solid gray;
+    outline: none;
+    padding: 5px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
