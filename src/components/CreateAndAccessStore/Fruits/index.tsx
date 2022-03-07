@@ -3,7 +3,10 @@ import { connect, MapStateToProps } from 'react-redux';
 
 import FruitsAction from '../../../store/action/fruitsAction';
 import { CustomDispatch } from '../../../store/middlewares/customMiddleware';
-import { FruitsReducerAction } from '../../../store/reducer/fruitsReducer';
+import {
+    FruitsReducerAction,
+    fruitsWithO,
+} from '../../../store/reducer/fruitsReducer';
 import {
     rootReducer,
     StoreStateType,
@@ -47,6 +50,7 @@ const mapStateToProps: MapStateToProps<
 > = (state, ownProps) => {
     console.log('Fruits Map State Props Called');
     return {
+        //fruits: fruitsWithO(state),
         fruits: state.fruits,
     };
 };
