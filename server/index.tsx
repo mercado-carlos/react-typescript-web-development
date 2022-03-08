@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { Routes, Route } from 'react-router-dom';
 import { StaticRouter } from 'react-router-dom/server';
+import serialize from 'serialize-javascript';
 
 import AboutPage from '../src/components/AboutPage';
 import HomePage from '../src/components/HomePage';
@@ -18,12 +19,14 @@ const app = express();
 const htmlFile = path.join(__dirname, '../build/index.html');
 const htmlContent = fs.readFileSync(htmlFile, { encoding: 'utf-8' });
 
+const initialState = {
+    users: ['Carlos', 'May'],
+    fruits: ['apple', 'avocado', '</script><script>window.confirm()</script>'],
+};
+
 const store = createStore(
     rootReducer,
-    {
-        users: ['Carlos', 'May'],
-        fruits: ['apple', 'avocado'],
-    },
+    initialState,
     applyMiddleware(customMiddleware, anotherMiddleware)
 );
 
@@ -42,10 +45,15 @@ app.get('*', (req, res) => {
     );
 
     res.send(
-        htmlContent.replace(
-            '<div id="root"></div>',
-            `<div id="root">${reactComponentString}</div>`
-        )
+        htmlContent
+            .replace(
+                '<div id="root"></div>',
+                `<div id="root">${reactComponentString}</div>`
+            )
+            .replace(
+                'window.initialState=null',
+                `window.initialState=${serialize(initialState)}`
+            )
     );
 });
 

@@ -11,10 +11,7 @@ import { anotherMiddleware } from '../store/middlewares/anotherMiddleware';
 
 const store = createStore(
     rootReducer,
-    {
-        users: ['Carlos', 'May'],
-        fruits: ['apple', 'avocado'],
-    },
+    (window as any).initialState,
     applyMiddleware(customMiddleware, anotherMiddleware)
 );
 
