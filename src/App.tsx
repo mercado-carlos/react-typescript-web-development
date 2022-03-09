@@ -6,19 +6,23 @@ import HomePage from './containers/HomePage';
 import AllProductsPage from './containers/AllProductsPage';
 import CheckoutPage from './containers/CheckoutPage';
 import { ROUTE } from './constants/route';
+import { HeaderNavigation } from './components/HeaderNavigation';
 
 function App() {
     return (
         <BrowserRouter>
-            <Routes>
-                <Route path={ROUTE.HOME} element={<HomePage />} />
-                <Route
-                    path={ROUTE.ALL_PRODUCTS}
-                    element={<AllProductsPage />}
-                />
-                <Route path={ROUTE.CHECKOUT} element={<CheckoutPage />} />
-                <Route path="*" element={<Navigate to="/" />} />
-            </Routes>
+            <div className="app-container">
+                <HeaderNavigation />
+                <Routes>
+                    <Route path={ROUTE.HOME} element={<HomePage />} />
+                    <Route
+                        path={ROUTE.ALL_PRODUCTS}
+                        element={<AllProductsPage />}
+                    />
+                    <Route path={ROUTE.CHECKOUT} element={<CheckoutPage />} />
+                    <Route path="*" element={<Navigate to="/" />} />
+                </Routes>
+            </div>
         </BrowserRouter>
     );
 }
