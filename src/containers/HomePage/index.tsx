@@ -1,5 +1,4 @@
 import React from 'react';
-import './style.css';
 
 import { ShopQuality } from '../../components/ShopQuality';
 import BestSeller from '../BestSeller';
