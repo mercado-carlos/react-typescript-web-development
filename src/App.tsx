@@ -1,8 +1,9 @@
 import React from 'react';
 import './styles/App.css';
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import createSagaMiddleware from 'redux-saga';
 
 import HomePage from './containers/HomePage';
 import AllProductsPage from './containers/AllProductsPage';
@@ -10,8 +11,17 @@ import CheckoutPage from './containers/CheckoutPage';
 import { ROUTE } from './constants/route';
 import { HeaderNavigation } from './components/HeaderNavigation';
 import { rootReducer } from './store/rootReducer';
+import ProductDetailsAction from './store/actions/productDetailsAction';
+import startRootSaga from './store/rootSaga';
 
-const store = createStore(rootReducer);
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+
+sagaMiddleware.run(startRootSaga);
+
+store.dispatch({ type: ProductDetailsAction.FETCH_PRODUCTS_DETAILS });
+
+(window as any).shopspree = store;
 
 function App() {
     return (
