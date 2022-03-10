@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import ProductDetailsAPI from '../../api/productsDetailsAPI';
 
+import ProductDetailsAPI from '../../api/productsDetailsAPI';
 import ProductDetailsAction from '../actions/productDetailsAction';
 import { ProductDetails } from '../reducers/productDetailsReducer';
 

@@ -4,6 +4,7 @@ import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import createSagaMiddleware from 'redux-saga';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import HomePage from './containers/HomePage';
 import AllProductsPage from './containers/AllProductsPage';
@@ -15,7 +16,10 @@ import ProductDetailsAction from './store/actions/productDetailsAction';
 import startRootSaga from './store/rootSaga';
 
 const sagaMiddleware = createSagaMiddleware();
-const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+const store = createStore(
+    rootReducer,
+    composeWithDevTools(applyMiddleware(sagaMiddleware))
+);
 
 sagaMiddleware.run(startRootSaga);
 
