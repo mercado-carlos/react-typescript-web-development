@@ -21,4 +21,13 @@
         box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
         transform: scale(1.05);
     }
+
+    &.dark {
+        background-color: white;
+        border-radius: 5px;
+
+        p {
+            color: black;
+        }
+    }
 }

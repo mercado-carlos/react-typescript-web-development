@@ -2,7 +2,7 @@ import React from 'react';
 import './styles/App.css';
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
@@ -33,18 +33,20 @@ function App() {
             <BrowserRouter>
                 <div className="app-container">
                     <HeaderNavigation />
-                    <Routes>
-                        <Route path={ROUTE.HOME} element={<HomePage />} />
+                    <Switch>
                         <Route
-                            path={ROUTE.ALL_PRODUCTS}
-                            element={<AllProductsPage />}
-                        />
-                        <Route
+                            exact
+                            component={CheckoutPage}
                             path={ROUTE.CHECKOUT}
-                            element={<CheckoutPage />}
                         />
-                        <Route path="*" element={<Navigate to="/" />} />
-                    </Routes>
+                        <Route
+                            exact
+                            component={AllProductsPage}
+                            path={ROUTE.ALL_PRODUCTS}
+                        />
+                        <Route exact component={HomePage} path={ROUTE.HOME} />
+                        <Redirect to="/" />
+                    </Switch>
                 </div>
             </BrowserRouter>
         </Provider>
