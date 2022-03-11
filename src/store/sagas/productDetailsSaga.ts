@@ -6,7 +6,7 @@ import ProductDetailsAction, {
 } from '../actions/productDetailsAction';
 import { ShopProducts } from '../reducers/productDetailsReducer';
 
-function* workerFetchProductsDetailSaga(action: FetchShopProductsAction) {
+function* workerFetchShopProductsSaga(action: FetchShopProductsAction) {
     const productsDetailsAPI = new ProductDetailsAPI();
     const productDetailsAction = new ProductDetailsAction();
 
@@ -23,9 +23,29 @@ function* workerFetchProductsDetailSaga(action: FetchShopProductsAction) {
     }
 }
 
+function* workerFetchBestSellerProductsSaga() {
+    const productsDetailsAPI = new ProductDetailsAPI();
+    const productDetailsAction = new ProductDetailsAction();
+
+    try {
+        const response = yield call(productsDetailsAPI.getProducts, {
+            category: ['best seller'],
+        });
+        const { products } = response.data as ShopProducts;
+
+        yield put(productDetailsAction.setBestSellerProducts(products));
+    } catch (error) {
+        console.log('error');
+    }
+}
+
 export function* watchProductDetailsSaga() {
     yield takeLatest(
         ProductDetailsAction.FETCH_SHOP_PRODUCTS,
-        workerFetchProductsDetailSaga
+        workerFetchShopProductsSaga
+    );
+    yield takeLatest(
+        ProductDetailsAction.FETCH_ALL_BEST_SELLER_PRODUCTS,
+        workerFetchBestSellerProductsSaga
     );
 }

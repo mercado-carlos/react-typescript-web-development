@@ -4,6 +4,7 @@ import {
     MapDispatchToPropsFunction,
     MapStateToProps,
 } from 'react-redux';
+
 import { ProductCard } from '../../components/ProductCard';
 import ProductDetailsAction from '../../store/actions/productDetailsAction';
 import { StoreStateType } from '../../store/rootReducer';
@@ -16,7 +17,11 @@ import {
 
 class AllProductsPage extends React.Component<AllProductsPageProps> {
     componentDidMount() {
-        this.props.fetchShopProducts({});
+        const { shopProducts } = this.props;
+
+        if (!shopProducts.products.length) {
+            this.props.fetchShopProducts({});
+        }
     }
 
     renderAllProducts = () => {

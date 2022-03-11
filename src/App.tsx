@@ -12,7 +12,6 @@ import CheckoutPage from './containers/CheckoutPage';
 import { ROUTE } from './constants/route';
 import { HeaderNavigation } from './components/HeaderNavigation';
 import { rootReducer } from './store/rootReducer';
-import ProductDetailsAction from './store/actions/productDetailsAction';
 import startRootSaga from './store/rootSaga';
 
 const sagaMiddleware = createSagaMiddleware();
