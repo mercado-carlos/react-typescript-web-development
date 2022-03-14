@@ -1,15 +1,33 @@
 .all-products-page-container {
+  margin-top: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  margin-bottom: 100px;
+}
+
+.all-products-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+
+.all-products-page-container .all-products {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin-top: 100px;
 }
 
 .all-products-page-container .product-item-container {
-  -ms-flex-preferred-size: 25%;
-      flex-basis: 25%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -20,6 +38,35 @@
       -ms-flex-align: center;
           align-items: center;
   margin-bottom: 100px;
+  margin-right: 40px;
+  margin-left: 40px;
+  height: 300px;
+}
+
+.all-products-side-bar {
+  width: 300px;
+  height: 600px;
+}
+
+.all-products-side-bar .product-filter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 10px;
+  border-top: 1px solid #ececec;
+}
+
+.all-products-side-bar .product-filter .filter-checkbox {
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
+
+.all-products-side-bar .product-filter p {
+  font-size: 18px;
 }
 
 .best-seller-container {

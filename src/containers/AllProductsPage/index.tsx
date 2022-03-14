@@ -4,11 +4,11 @@ import {
     MapDispatchToPropsFunction,
     MapStateToProps,
 } from 'react-redux';
+import AllProductsSideBar from '../../components/AllProductsSideBar';
 
 import { ProductCard } from '../../components/ProductCard';
 import ShopAction from '../../store/actions/shopAction';
 import { StoreStateType } from '../../store/rootReducer';
-import Checkbox from '../../ui-components/Checkbox';
 import {
     AllProductsDispatchToProps,
     AllProductsOwnProps,
@@ -37,10 +37,14 @@ class AllProductsPage extends React.Component<AllProductsPageProps> {
     };
 
     render() {
+        const { productFilters } = this.props;
+
         return (
             <div className="all-products-page-container">
-                <Checkbox onChange={() => {}}>Filter</Checkbox>
-                {this.renderAllProducts()}
+                <AllProductsSideBar productFilters={productFilters} />
+                <div className="all-products-container">
+                    {this.renderAllProducts()}
+                </div>
             </div>
         );
     }
