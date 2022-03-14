@@ -6,7 +6,7 @@ import {
 } from 'react-redux';
 
 import { ProductCard } from '../../components/ProductCard';
-import ProductDetailsAction from '../../store/actions/productDetailsAction';
+import ShopAction from '../../store/actions/shopAction';
 import { StoreStateType } from '../../store/rootReducer';
 import {
     AllProductsDispatchToProps,
@@ -20,7 +20,7 @@ class AllProductsPage extends React.Component<AllProductsPageProps> {
         const { shopProducts } = this.props;
 
         if (!shopProducts.products.length) {
-            this.props.fetchShopProducts({});
+            this.props.fetchShopProductsAndFilters();
         }
     }
 
@@ -49,8 +49,10 @@ const mapStateToProps: MapStateToProps<
     AllProductsOwnProps,
     StoreStateType
 > = (state) => {
+    const { shopProducts, productFilters } = state.shop;
     return {
-        shopProducts: state.productDetails.shopProducts,
+        shopProducts: shopProducts,
+        productFilters: productFilters,
     };
 };
 
@@ -58,10 +60,12 @@ const mapDispatchToProps: MapDispatchToPropsFunction<
     AllProductsDispatchToProps,
     AllProductsOwnProps
 > = (dispatch) => {
-    const { fetchShopProducts } = new ProductDetailsAction();
+    const { fetchShopProducts, fetchShopProductsAndFilters } = new ShopAction();
 
     return {
         fetchShopProducts: (options) => dispatch(fetchShopProducts(options)),
+        fetchShopProductsAndFilters: () =>
+            dispatch(fetchShopProductsAndFilters()),
     };
 };
 
