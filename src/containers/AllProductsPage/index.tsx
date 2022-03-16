@@ -6,6 +6,7 @@ import {
 } from 'react-redux';
 
 import AllProductsSideBar from '../../components/AllProductsSideBar';
+import Pagination from '../../components/Pagination';
 import { ProductCard } from '../../components/ProductCard';
 import ShopAction from '../../store/actions/shopAction';
 import UserAction from '../../store/actions/userAction';
@@ -38,21 +39,26 @@ class AllProductsPage extends React.Component<AllProductsPageProps> {
         });
     };
 
+    handlePageChange = (selectedPage: number) => {};
+
     render() {
         const { productFilters, userFilters, updateUserFilters } = this.props;
 
         return (
             <div className="all-products-page-container">
-                <Button type="primary" onClick={() => {}}>
-                    Test
-                </Button>
                 <AllProductsSideBar
                     onUpdateUserFilters={updateUserFilters}
                     userFilters={userFilters}
                     productFilters={productFilters}
                 />
                 <div className="all-products-container">
-                    {this.renderAllProducts()}
+                    <div className="all-products">
+                        {this.renderAllProducts()}
+                    </div>
+                    <Pagination
+                        onChange={this.handlePageChange}
+                        numberOfPages={10}
+                    />
                 </div>
             </div>
         );

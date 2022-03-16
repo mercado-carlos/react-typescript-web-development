@@ -242,6 +242,40 @@
   background-size: cover;
 }
 
+.pagination-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.pagination-container .pages-container {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.pagination-container .page-caret {
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.pagination-container .page-button {
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 30px;
+  height: 30px;
+}
+
+.pagination-container.dark .page-caret {
+  color: white;
+}
+
 .partners-container {
   margin-top: 200px;
   min-height: 500px;
