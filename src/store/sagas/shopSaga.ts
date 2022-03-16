@@ -14,7 +14,7 @@ function* workerFetchShopProductsSaga(action: FetchShopProductsAction) {
 
         yield put(shopAction.setShopProducts(shopProducts));
     } catch (error) {
-        console.log('error');
+        console.log(error);
     }
 }
 
@@ -30,7 +30,7 @@ function* workerFetchBestSellerProductsSaga() {
 
         yield put(shopAction.setBestSellerProducts(products));
     } catch (error) {
-        console.log('error');
+        console.log(error);
     }
 }
 
@@ -51,7 +51,7 @@ function* workerFetchShopProductsAndFilterSaga(
             shopAction.setShopProductsAndFilters(shopProducts, productFilters)
         );
     } catch (error) {
-        console.log('error');
+        console.log(error);
     }
 }
 

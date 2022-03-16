@@ -20,9 +20,9 @@ class ShopAPI {
             category ? category.join('&category=') : ''
         }`;
 
-        const allQueryParams = `${pageQueryParam}${sizeQueryParam}${categoryQueryParam}`;
-
-        return axios.get(`http://localhost:1234/products?${allQueryParams}`);
+        return axios.get(
+            `http://localhost:1234/products?${pageQueryParam}${sizeQueryParam}${categoryQueryParam}`
+        );
     };
 
     getProductFilters = () => {
