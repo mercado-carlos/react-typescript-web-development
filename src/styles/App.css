@@ -101,6 +101,48 @@
       flex-wrap: wrap;
 }
 
+.btn {
+  height: 40px;
+  width: auto;
+  border-radius: 5px;
+  border: none;
+  outline: 0;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: Arial;
+}
+
+.btn:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+}
+
+.btn-primary {
+  background-color: #e66b00;
+}
+
+.btn-primary:hover, .btn-primary.selected {
+  background-color: #a44e00;
+}
+
+.btn-default {
+  background-color: #ffffff;
+  color: #404040;
+  border: 1px solid #a8a8a8;
+}
+
+.btn-default:hover, .btn-default.selected {
+  background-color: #b3b3b3;
+}
+
+.btn.disabled {
+  background-color: #ebebe4;
+  color: #c6c6c6;
+  cursor: not-allowed;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
 .checkbox-container {
   cursor: pointer;
   font-size: 15px;
