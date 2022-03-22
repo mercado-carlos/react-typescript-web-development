@@ -1,4 +1,5 @@
 import React from 'react';
+import { getProductVariantDetails } from '../../utils/products';
 
 import { ProductCardModal } from '../ProductCardModal';
 import { ProductCardProps, ProductCardState } from './interface';
@@ -26,28 +27,27 @@ export class ProductCard extends React.Component<
     render() {
         const { showDetails } = this.state;
         const { product } = this.props;
-        const { title, variants } = product;
+        const { initialVariant, variants } = getProductVariantDetails(product);
 
-        const imageURL = variants[0].image;
-
-        return (
+        return initialVariant ? (
             <div
                 onClick={this.onClickProductCard}
                 className="product-card-container"
             >
                 <div
-                    style={{ backgroundImage: `url(${imageURL})` }}
+                    style={{ backgroundImage: `url(${initialVariant.image})` }}
                     className="product-image"
                 />
                 <div className="product-details">
-                    <p>{title}</p>
+                    <p>{initialVariant.title}</p>
                 </div>
                 <ProductCardModal
                     onClickOutsideModalBody={this.onClickOutsideModalBody}
                     show={showDetails}
-                    product={product}
+                    initialVariant={initialVariant}
+                    variants={variants}
                 />
             </div>
-        );
+        ) : null;
     }
 }

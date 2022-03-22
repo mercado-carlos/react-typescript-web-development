@@ -1,14 +1,25 @@
 import React from 'react';
+
 import { Modal } from '../../ui-components/Modal';
+import { ProductCardModalProps, ProductCardModalState } from './interface';
 
-import { ProductCardModalProps } from './interface';
+export class ProductCardModal extends React.Component<
+    ProductCardModalProps,
+    ProductCardModalState
+> {
+    constructor(props: ProductCardModalProps) {
+        super(props);
 
-export class ProductCardModal extends React.Component<ProductCardModalProps> {
+        this.state = {
+            selectedVariant: props.initialVariant,
+        };
+    }
+
     render() {
-        const { product, show, onClickOutsideModalBody } = this.props;
-        const { title, variants } = product;
+        const { show, onClickOutsideModalBody } = this.props;
 
-        const imageURL = variants[0].image;
+        const { selectedVariant } = this.state;
+        const { title, image } = selectedVariant;
 
         return (
             <Modal
@@ -18,7 +29,7 @@ export class ProductCardModal extends React.Component<ProductCardModalProps> {
             >
                 <div className="modal-product-details-container">
                     <div className="modal-product-image">
-                        <img src={imageURL} />
+                        <img src={image} />
                     </div>
                     <div className="modal-product-details">
                         <p className="modal-product-name">{title}</p>
