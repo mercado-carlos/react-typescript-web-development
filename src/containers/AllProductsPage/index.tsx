@@ -12,6 +12,7 @@ import ShopAction from '../../store/actions/shopAction';
 import UserAction from '../../store/actions/userAction';
 import { StoreStateType } from '../../store/rootReducer';
 import { Button } from '../../ui-components/Button';
+import { Modal } from '../../ui-components/Modal';
 import {
     AllProductsDispatchToProps,
     AllProductsOwnProps,
@@ -58,6 +59,9 @@ class AllProductsPage extends React.Component<AllProductsPageProps> {
 
         return (
             <div className="all-products-page-container">
+                <Modal>
+                    <div>My First Modal</div>
+                </Modal>
                 <AllProductsSideBar
                     onUpdateUserFilters={updateUserFilters}
                     userFilters={userFilters}
