@@ -12,4 +12,6 @@ export const convertFiltersToCategories = (filters: ProductFilters) => {
             categories = categories.concat(categoryFilters);
         }
     });
+
+    return categories;
 };

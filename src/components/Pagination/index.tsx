@@ -12,10 +12,20 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
         };
     }
 
-    handleLeftCaretClick = () => {
+    currentSelectedPage = () => {
+        const { overrideSelectedPage } = this.props;
         const { selectedPage } = this.state;
 
-        const newPage = selectedPage === 1 ? selectedPage : selectedPage - 1;
+        return overrideSelectedPage || selectedPage;
+    };
+
+    handleLeftCaretClick = () => {
+        const currentSelectedPage = this.currentSelectedPage();
+
+        const newPage =
+            currentSelectedPage === 1
+                ? currentSelectedPage
+                : currentSelectedPage - 1;
 
         this.setState({ selectedPage: newPage });
         this.props.onChange(newPage);
@@ -23,10 +33,13 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
 
     handleRightCaretClick = () => {
         const { numberOfPages, onChange } = this.props;
-        const { selectedPage } = this.state;
+
+        const currentSelectedPage = this.currentSelectedPage();
 
         const newPage =
-            selectedPage === numberOfPages ? selectedPage : selectedPage + 1;
+            currentSelectedPage === numberOfPages
+                ? currentSelectedPage
+                : currentSelectedPage + 1;
 
         this.setState({ selectedPage: newPage });
         onChange(newPage);
@@ -43,7 +56,8 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
 
     renderPageButtons = () => {
         const { numberOfPages } = this.props;
-        const { selectedPage } = this.state;
+
+        const currentSelectedPage = this.currentSelectedPage();
 
         return [...new Array(numberOfPages)].map((value, index) => {
             const page = index + 1;
@@ -51,7 +65,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
             return (
                 <Button
                     key={page}
-                    selected={selectedPage === page}
+                    selected={currentSelectedPage === page}
                     onClick={this.pageClick(page)}
                     className="page-button"
                 >

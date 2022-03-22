@@ -39,10 +39,22 @@ class AllProductsPage extends React.Component<AllProductsPageProps> {
         });
     };
 
-    handlePageChange = (selectedPage: number) => {};
+    handlePageChange = (selectedPage: number) => {
+        const { userSelectedPage, updateUserShopProductsPage } = this.props;
+
+        if (userSelectedPage !== selectedPage) {
+            updateUserShopProductsPage(selectedPage);
+        }
+    };
 
     render() {
-        const { productFilters, userFilters, updateUserFilters } = this.props;
+        const {
+            productFilters,
+            userFilters,
+            updateUserFilters,
+            shopProducts,
+            userSelectedPage,
+        } = this.props;
 
         return (
             <div className="all-products-page-container">
@@ -56,8 +68,9 @@ class AllProductsPage extends React.Component<AllProductsPageProps> {
                         {this.renderAllProducts()}
                     </div>
                     <Pagination
+                        overrideSelectedPage={userSelectedPage}
                         onChange={this.handlePageChange}
-                        numberOfPages={10}
+                        numberOfPages={shopProducts.totalPages}
                     />
                 </div>
             </div>
@@ -71,12 +84,13 @@ const mapStateToProps: MapStateToProps<
     StoreStateType
 > = (state) => {
     const { shopProducts, productFilters } = state.shop;
-    const { filters } = state.user;
+    const { filters, shopProductsPage } = state.user;
 
     return {
         shopProducts: shopProducts,
         productFilters: productFilters,
         userFilters: filters,
+        userSelectedPage: shopProductsPage,
     };
 };
 
@@ -85,13 +99,15 @@ const mapDispatchToProps: MapDispatchToPropsFunction<
     AllProductsOwnProps
 > = (dispatch) => {
     const { fetchShopProducts, fetchShopProductsAndFilters } = new ShopAction();
-    const { updateUserFilters } = new UserAction();
+    const { updateUserFilters, updateUserShopProductsPage } = new UserAction();
 
     return {
         fetchShopProducts: (options) => dispatch(fetchShopProducts(options)),
         fetchShopProductsAndFilters: () =>
             dispatch(fetchShopProductsAndFilters()),
         updateUserFilters: (filters) => dispatch(updateUserFilters(filters)),
+        updateUserShopProductsPage: (shopProductsPage) =>
+            dispatch(updateUserShopProductsPage(shopProductsPage)),
     };
 };
 
