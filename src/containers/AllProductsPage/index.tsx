@@ -11,7 +11,6 @@ import { ProductCard } from '../../components/ProductCard';
 import ShopAction from '../../store/actions/shopAction';
 import UserAction from '../../store/actions/userAction';
 import { StoreStateType } from '../../store/rootReducer';
-import { Button } from '../../ui-components/Button';
 import { Modal } from '../../ui-components/Modal';
 import {
     AllProductsDispatchToProps,
@@ -31,10 +30,10 @@ class AllProductsPage extends React.Component<AllProductsPageProps> {
 
     renderAllProducts = () => {
         const { shopProducts } = this.props;
-        return shopProducts.products.map(({ title, variants, id }) => {
+        return shopProducts.products.map((product) => {
             return (
-                <div className="product-item-container" key={id}>
-                    <ProductCard name={title} url={variants[0].image} />
+                <div className="product-item-container" key={product.id}>
+                    <ProductCard product={product} />
                 </div>
             );
         });
@@ -59,9 +58,6 @@ class AllProductsPage extends React.Component<AllProductsPageProps> {
 
         return (
             <div className="all-products-page-container">
-                <Modal>
-                    <div>My First Modal</div>
-                </Modal>
                 <AllProductsSideBar
                     onUpdateUserFilters={updateUserFilters}
                     userFilters={userFilters}

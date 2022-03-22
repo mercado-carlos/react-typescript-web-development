@@ -4,7 +4,6 @@ import ShopAPI, {
     GetProductsOptions,
     ProductFiltersAPIResponse,
 } from '../../api/shopAPI';
-import { convertFiltersToCategories } from '../../utils/helper';
 import ShopAction, { FetchShopProductsAction } from '../actions/shopAction';
 import { ShopProducts } from '../reducers/shopReducer';
 import { User } from '../reducers/userReducer';
