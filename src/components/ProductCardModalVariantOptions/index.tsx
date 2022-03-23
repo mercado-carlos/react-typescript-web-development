@@ -5,7 +5,13 @@ import { ProductCardModalVariantOptionsProps } from './interface';
 
 export const ProductCardModalVariantOptions: React.FC<
     ProductCardModalVariantOptionsProps
-> = ({ variants, selectedVariant }) => {
+> = ({
+    variants,
+    selectedVariant,
+    variantsOptionsAvailable,
+    onSizeChange,
+    onColorChange,
+}) => {
     const renderVariantOptionsContainer = (
         category: string,
         options: React.ReactNode[]
@@ -16,6 +22,14 @@ export const ProductCardModalVariantOptions: React.FC<
                 <div className="variant-option">{options}</div>
             </div>
         );
+    };
+
+    const handleSizeChange = (size: string) => () => {
+        onSizeChange(size);
+    };
+
+    const handleColorChange = (color: string) => () => {
+        onColorChange(color);
     };
 
     const sizesUI: React.ReactNode[] = [];
@@ -30,39 +44,39 @@ export const ProductCardModalVariantOptions: React.FC<
             sizesUI.push(
                 <Button
                     className={`${variantButtonClassName} size`}
-                    onClick={() => {}}
+                    onClick={handleSizeChange(size)}
                     key={size}
                     selected={selectedVariant.size === size}
+                    disabled={!variantsOptionsAvailable[size]}
                 >
                     {size}
                 </Button>
             );
         }
 
-        if (!processData.includes(color)) {
-            const arrayColors = color.split('&');
-            const backgroundStyle: React.CSSProperties =
-                arrayColors.length > 1
-                    ? {
-                          backgroundImage: `linear-gradient(${arrayColors.join(
-                              ','
-                          )})`,
-                      }
-                    : { backgroundColor: color };
-
-            colorsUI.push(
-                <Button
-                    style={backgroundStyle}
-                    className={`${variantButtonClassName} color`}
-                    onClick={() => {}}
-                    key={color}
-                    selected={selectedVariant.color === color}
-                />
-            );
-        }
-
-        processData.push(color);
         processData.push(size);
+    });
+
+    variantsOptionsAvailable[selectedVariant.size].forEach((color) => {
+        const arrayColors = color.split('&');
+        const backgroundStyle: React.CSSProperties =
+            arrayColors.length > 1
+                ? {
+                      backgroundImage: `linear-gradient(${arrayColors.join(
+                          ','
+                      )})`,
+                  }
+                : { backgroundColor: color };
+
+        colorsUI.push(
+            <Button
+                style={backgroundStyle}
+                className={`${variantButtonClassName} color`}
+                onClick={handleColorChange(color)}
+                key={color}
+                selected={selectedVariant.color === color}
+            />
+        );
     });
 
     return (

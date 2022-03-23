@@ -4,13 +4,23 @@ import { ProductCardModalQuantityUIProps } from './interface';
 
 export const ProductCardModalQuantityUI: React.FC<
     ProductCardModalQuantityUIProps
-> = ({ quantity }) => {
+> = ({ quantity, onClickAdd, onClickMinus }) => {
     return (
         <div className="quantity-container">
-            <label>
-                <i className="fa fa-minus qty-button"></i>
+            <label className="quantity-container-label">
+                <div>
+                    <i
+                        onClick={onClickMinus}
+                        className="fa fa-minus qty-button"
+                    ></i>
+                </div>
                 <span className="qty-value">QTY {quantity}</span>
-                <i className="fa fa-plus qty-button"></i>
+                <div>
+                    <i
+                        onClick={onClickAdd}
+                        className="fa fa-plus qty-button"
+                    ></i>
+                </div>
             </label>
         </div>
     );

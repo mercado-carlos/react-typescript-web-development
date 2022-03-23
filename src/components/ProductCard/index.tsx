@@ -1,6 +1,6 @@
 import React from 'react';
-import { getProductVariantDetails } from '../../utils/products';
 
+import { getProductVariantDetails } from '../../utils/products';
 import { ProductCardModal } from '../ProductCardModal';
 import { ProductCardProps, ProductCardState } from './interface';
 
@@ -27,7 +27,8 @@ export class ProductCard extends React.Component<
     render() {
         const { showDetails } = this.state;
         const { product } = this.props;
-        const { initialVariant, variants } = getProductVariantDetails(product);
+        const { initialVariant, variants, variantsOptionsAvailable } =
+            getProductVariantDetails(product);
 
         return initialVariant ? (
             <div
@@ -46,6 +47,7 @@ export class ProductCard extends React.Component<
                     show={showDetails}
                     initialVariant={initialVariant}
                     variants={variants}
+                    variantsOptionsAvailable={variantsOptionsAvailable}
                 />
             </div>
         ) : null;
