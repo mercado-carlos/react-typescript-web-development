@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 import { ROUTE } from '../../constants/route';
+import ShoppingCart from '../ShoppingCart';
 
 export const HeaderNavigation: React.FC = () => {
     return (
@@ -15,7 +16,7 @@ export const HeaderNavigation: React.FC = () => {
                 </Link>
             </div>
             <div className="nav-items-right">
-                <i className="nav-item fa fa-shopping-cart"></i>
+                <ShoppingCart />
             </div>
         </div>
     );
