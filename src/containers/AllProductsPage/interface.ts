@@ -3,6 +3,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import { GetProductsOptions } from '../../api/shopAPI';
 import { FetchShopProductsAction } from '../../store/actions/shopAction';
 import { ProductFilters, ShopProducts } from '../../store/reducers/shopReducer';
+import { ProductPurchase } from '../../store/reducers/userReducer';
 
 export interface AllProductsStateProps {
     shopProducts: ShopProducts;
@@ -18,6 +19,7 @@ export interface AllProductsDispatchToProps {
     fetchShopProductsAndFilters(): any;
     updateUserFilters(filters: ProductFilters): any;
     updateUserShopProductsPage(shopProductsPage: number): any;
+    addToCart(product: ProductPurchase): any;
 }
 
 export type AllProductsPageProps = AllProductsStateProps &

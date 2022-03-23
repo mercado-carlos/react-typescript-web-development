@@ -28,11 +28,11 @@ class AllProductsPage extends React.Component<AllProductsPageProps> {
     }
 
     renderAllProducts = () => {
-        const { shopProducts } = this.props;
+        const { shopProducts, addToCart } = this.props;
         return shopProducts.products.map((product) => {
             return (
                 <div className="product-item-container" key={product.id}>
-                    <ProductCard product={product} />
+                    <ProductCard product={product} addToCart={addToCart} />
                 </div>
             );
         });
@@ -98,7 +98,8 @@ const mapDispatchToProps: MapDispatchToPropsFunction<
     AllProductsOwnProps
 > = (dispatch) => {
     const { fetchShopProducts, fetchShopProductsAndFilters } = new ShopAction();
-    const { updateUserFilters, updateUserShopProductsPage } = new UserAction();
+    const { updateUserFilters, updateUserShopProductsPage, addToCart } =
+        new UserAction();
 
     return {
         fetchShopProducts: (options) => dispatch(fetchShopProducts(options)),
@@ -107,6 +108,7 @@ const mapDispatchToProps: MapDispatchToPropsFunction<
         updateUserFilters: (filters) => dispatch(updateUserFilters(filters)),
         updateUserShopProductsPage: (shopProductsPage) =>
             dispatch(updateUserShopProductsPage(shopProductsPage)),
+        addToCart: (productPurchase) => dispatch(addToCart(productPurchase)),
     };
 };
 
