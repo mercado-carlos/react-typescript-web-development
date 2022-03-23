@@ -1,3 +1,5 @@
+import React from 'react';
+
 export type ButtonType = 'primary' | 'default';
 
 export interface ButtonProps {
@@ -5,4 +7,5 @@ export interface ButtonProps {
     selected?: boolean;
     type?: ButtonType;
     onClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
+    style?: React.CSSProperties;
 }

@@ -8,11 +8,13 @@ export const Button: React.FC<ButtonProps> = ({
     selected,
     onClick,
     className,
+    style,
 }) => {
     const selectedClass = selected ? 'selected' : '';
 
     return (
         <button
+            style={style}
             onClick={onClick}
             className={`btn btn-${type} ${selectedClass} ${className || ''}`}
         >

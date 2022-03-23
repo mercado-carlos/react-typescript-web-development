@@ -11,7 +11,6 @@ import { ProductCard } from '../../components/ProductCard';
 import ShopAction from '../../store/actions/shopAction';
 import UserAction from '../../store/actions/userAction';
 import { StoreStateType } from '../../store/rootReducer';
-import { Modal } from '../../ui-components/Modal';
 import {
     AllProductsDispatchToProps,
     AllProductsOwnProps,
